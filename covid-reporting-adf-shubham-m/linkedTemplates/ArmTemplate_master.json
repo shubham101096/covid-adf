@@ -1,0 +1,70 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "covid-reporting-adf-shubham-m"
+		},
+		"ls_ablob_covidreportingsashubhamm_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_ablob_covidreportingsashubhamm'"
+		},
+		"ls_adls_covidreportingdlshubham_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_adls_covidreportingdlshubham'"
+		},
+		"ls_adls_covidreportingdlshubham_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://covidreportingdlshubham.dfs.core.windows.net/"
+		},
+		"tr_ingest_population_data_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/cd6a774f-75a1-4a33-b761-c432b85a73e7/resourceGroups/covid-reporting-rg/providers/Microsoft.Storage/storageAccounts/covidreportingsashubhamm"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "covid-reporting-adf-shubham-m_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_ablob_covidreportingsashubhamm_connectionString": {
+						"value": "[parameters('ls_ablob_covidreportingsashubhamm_connectionString')]"
+					},
+					"ls_adls_covidreportingdlshubham_accountKey": {
+						"value": "[parameters('ls_adls_covidreportingdlshubham_accountKey')]"
+					},
+					"ls_adls_covidreportingdlshubham_properties_typeProperties_url": {
+						"value": "[parameters('ls_adls_covidreportingdlshubham_properties_typeProperties_url')]"
+					},
+					"tr_ingest_population_data_properties_typeProperties_scope": {
+						"value": "[parameters('tr_ingest_population_data_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
