@@ -9,10 +9,7 @@ This project demonstrates a real-world data engineering solution using **Azure D
 - Azure SQL Database
 - Azure Blob Storage
 - Azure Databricks
-- Azure DevOps (CI/CD)
-- Azure Monitor & Log Analytics
-- Power BI
-
+  
 ## Key Features
 
 ### Data Ingestion
@@ -30,14 +27,4 @@ This project demonstrates a real-world data engineering solution using **Azure D
 - Event Trigger, Schedule Trigger, Tumbling Window Trigger
 - Control flow activities: If Condition, ForEach, Wait, Validation
 - Pipeline chaining and dependencies
-
-### Monitoring
-- Pipeline monitoring using Azure Data Factory Monitor
-- Diagnostic logs forwarded to Log Analytics Workspace
-- Custom dashboards and alerts via Azure Monitor
-
-### CI/CD with Azure DevOps
-- Source control using Azure DevOps Git Repos
-- Build & release pipelines for deploying ADF artifacts
-- Parameterized release to Test and Production environments
 
